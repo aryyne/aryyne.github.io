@@ -1,0 +1,871 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="./img/favicon.svg" type="image/x-icon">
+    <title>Aryyne</title>
+    <style>
+        :root {
+            --p0: #1A3073;
+            --p1: #E4EBF2;
+            --s0: #243E73;
+            --s1: #AAB1BF;
+            --s2: #CCD3D9;
+        }
+        @font-face {
+            font-family: osaka;
+            src: url(./fonts/osaka-re.ttf);
+        }
+        @font-face {
+            font-family: catCafe;
+            src: url(./fonts/CatCafe.ttf);
+        }
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: catcafe;
+        }
+        html {
+            scroll-behavior: smooth;
+        }
+        @media screen and (max-width: 768px) {
+            header {
+                position: fixed;
+                z-index: 1;
+                width: 100vw;
+                height: 12vh;
+                display: flex;
+                flex-flow: row nowrap;
+                align-items: center;
+                justify-content: center;
+                gap: 20%;
+                background-color: var(--p0);
+            }
+            #sign {
+                transform: scale(.75);
+                width: 75%;
+            }
+            #burger {
+                transform: scale(.85);
+                width: 25%;
+            }
+            .burger-bar {
+                width: 35px;
+                height: 4px;
+                margin: 6px 0;
+                background-color: var(--p1);
+            }
+            .burger0, .burger1, .burger2 {
+                transition: .4s;
+            }
+            .change-burger .burger0 {
+                transform: translate(0, 10px) rotate(45deg);
+            }
+            .change-burger .burger1 {
+                opacity: 0;
+            }
+            .change-burger .burger2 {
+                transform: translate(0, -10px) rotate(-45deg);
+            }
+            nav {
+                position: absolute;
+                top: 12vh;
+                width: 100%;
+                height: 88vh;
+                display: none;
+                text-align: center;
+                background-color: var(--p0);
+            }
+            nav ul {
+                list-style: none;
+            }
+            nav ul li a {
+                font-size: 1.4em;
+                text-decoration: none;
+                color: var(--s2);
+            }
+            .show-nav{
+                display: block;
+                padding: 2em;
+            }
+            main {
+                position: relative;
+                top: 12vh;
+                width: 100%;
+                background-color: var(--s2);
+            }
+            #sobre {
+                width: 80%;
+                height: 88vh;
+                margin: 0 auto;
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                scroll-margin-top: 12vh;
+                color: var(--s0);
+            }
+            #sobre h3 {
+                font-size: 1.05em;
+                text-align: center;
+                text-transform: uppercase;
+                padding: 0 0 1em 0;
+                color: #2b2b2b;
+            }
+            #sobre p {
+                font-size: .95em;
+                font-weight: 500;
+                padding: .2em;
+            }
+            #termos {
+                width: 100%;
+                margin: 0 auto;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                scroll-margin-top: 12vh;
+                color: var(--s0);
+                background-color: var(--p1);
+            }
+            #termos h3 {
+                font-size: 1.05em;
+                text-align: center;
+                text-transform: uppercase;
+                padding: 2em 0 1em 0;
+                color: #2b2b2b;
+            }
+            #termos h4 {
+                font-size: .95em;
+                text-align: center;
+                text-transform: uppercase;
+                text-decoration: underline;
+                padding: 2em 0 1em 0;
+                color: #2b2b2b;
+            }
+            #termos p {
+                width: 80%;
+                font-size: .95em;
+                font-weight: 500;
+                padding: .2em;
+            }
+            #fds {
+                font-size: .65em;
+                text-align: center;
+                margin: 1em;
+                color: #2b2b2b;
+            }
+            #nao-faco {
+                width: 60%;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                text-align: center;
+                font-size: 1em;
+            }
+            #formas-pagamento {
+                width: 100%;
+                display: flex;
+                flex-direction: row;
+                justify-content: center;
+                gap: 5%;
+                padding-bottom: 2em;
+            }
+            #formas-pagamento li {
+                display: flex;
+                flex-direction: row;
+                justify-content: center;
+                font-size: 1.15em;
+                color: black;
+            }
+            #formas-pagamento li img {
+                width: 1.4em;
+                height: 1.4em;
+            }
+            #precos {
+                width: 100%;
+                display: flex;
+                flex-flow: column nowrap;
+                align-items: center;
+                scroll-margin-top: 12vh;
+                background-color: var(--s0);
+            }
+            #precos h3 {
+                color: var(--s2);
+                text-transform: uppercase;
+                padding: 2em 0 1em 0;
+            }
+            #precos h4 {
+                font-size: .95em;
+                text-align: center;
+                text-transform: uppercase;
+                text-decoration: underline;
+                padding: 2em 0 1em 0;
+                color: var(--s2);
+            }
+            #precos p {
+                width: 80%;
+                font-size: .95em;
+                font-weight: 500;
+                padding: .2em;
+                color: var(--s2);
+            }
+            .container-chibi {
+                max-width: 90%;
+                position: relative;
+                margin: auto;
+                padding: 2.5em 0 0 0;
+            }
+            #chibi h3 {
+                padding: .2em;
+            }
+            #chibi h3:first-child {
+                font-weight: 500;
+                text-align: center;
+                border-bottom: 2px solid var(--s2);
+            }
+            #chibi h3:last-child {
+                width: 100%;
+                font-size: .9em;
+                font-weight: 500;
+                text-align: center;
+                text-transform: initial;
+                margin-bottom: 4em;
+            }
+            .container-icone {
+                max-width: 90%;
+                position: relative;
+                margin: auto;
+                padding: 2.5em 0 0 0;
+            }
+            #icone h3 {
+                padding: .2em;
+            }
+            #icone h3:first-child {
+                font-weight: 500;
+                text-align: center;
+                border-bottom: 2px solid var(--s2);
+            }
+            #icone h3:last-child {
+                width: 100%;
+                font-size: .9em;
+                font-weight: 500;
+                text-align: center;
+                text-transform: initial;
+                margin-bottom: 4em;
+            }
+            .container-mc {
+                max-width: 90%;
+                position: relative;
+                margin: auto;
+            }
+            #meio-corpo {
+                display: flex;
+                flex-flow: column nowrap;
+            }
+            #meio-corpo h3 {
+                width: 100%;
+                margin: auto;
+                padding: 0.2em;
+                font-weight: 500;
+                text-align: center;
+            }
+            #items {
+                width: 70%;
+                margin: auto;
+                display: flex;
+                flex-flow: row nowrap;
+            }
+            #meio-corpo #items h3 {
+                width: 80%;
+                border-bottom: 2px solid var(--s2);
+            }
+            #price {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                text-align: center;
+            }
+            #price h3 {
+                border: none;
+            }
+            .container-ci {
+                max-width: 90%;
+                position: relative;
+                margin: auto;
+                padding: 2.5em 0 0 0;
+            }
+            #corpo-inteiro h3 {
+                padding: .2em;
+            }
+            #corpo-inteiro h3:first-child {
+                font-weight: 500;
+                text-align: center;
+            }
+            #corpo-inteiro #items h3 {
+                width: 85%;
+                border-bottom: 2px solid var(--s2);
+            }
+            .container-rascunho {
+                max-width: 90%;
+                position: relative;
+                margin: auto;
+                padding: 2.5em 0 0 0;
+            }
+            #rascunho h3 {
+                padding: .2em;
+            }
+            #rascunho h3:first-child {
+                font-weight: 500;
+                text-align: center;
+                border-bottom: 2px solid var(--s2);
+            }
+            #rascunho h3:last-child {
+                width: 100%;
+                font-size: .9em;
+                font-weight: 500;
+                text-align: center;
+                text-transform: initial;
+            }
+            .slide {
+                display: none;
+            }
+            .fade {
+                animation-name: fade;
+                animation-duration: 1.5s;
+            }
+            @keyframes fade {
+                from {opacity: .4}
+                to {opacity: 1}
+            }
+            footer {
+                height: 10vh;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+            }
+            .social {
+                display: flex;
+                flex-direction: row;
+                gap: .6em;
+            }
+            .d34d {
+                height: 4vh;
+                text-align: end;
+                margin-top: 1em;
+                padding: 1em 1em 0 0;
+                font-size: .6em;
+            }
+        }
+        @media screen and (min-width: 768px) {
+            header {
+                position: fixed;
+                z-index: 1;
+                width: 100%;
+                height: 12vh;
+                display: flex;
+                flex-flow: row nowrap;
+                align-items: center;
+                justify-content: center;
+                gap: 2em;
+                background-color: var(--p0);
+            }
+            #sign {
+                transform: scale(.75);
+                width: 20%;
+            }
+            #burger {
+                display: none;   
+            }
+            nav {
+                justify-self: flex-start;
+                width: 20%;
+                background-color: var(--p0);
+            }
+            nav ul {
+                display: flex;
+                gap: 1em;
+                list-style: none;
+            }
+            nav ul li a {
+                font-size: 1.15em;
+                text-decoration: none;
+                color: var(--s2);
+            }
+            main {
+                position: relative;
+                top: 12vh;
+                width: 100%;
+                background-color: var(--s2);
+            }
+            #sobre {
+                width: 40%;
+                height: 88vh;
+                margin: 0 auto;
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                scroll-margin-top: 12vh;
+                color: var(--s0);
+            }
+            #sobre h3 {
+                font-size: 1.05em;
+                text-align: center;
+                text-transform: uppercase;
+                padding: 0 0 2.5em 0;
+                color: #2b2b2b;
+            }
+            #sobre p {
+                font-size: .95em;
+                font-weight: 500;
+                padding: .2em;
+            }
+            #termos {
+                width: 100%;
+                margin: 0 auto;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                scroll-margin-top: 12vh;
+                color: var(--s0);
+                background-color: var(--p1);
+            }
+            #termos h3 {
+                font-size: 1.05em;
+                text-align: center;
+                text-transform: uppercase;
+                padding: 2.5em 0 2.5em 0;
+                color: #2b2b2b;
+            }
+            #termos h4 {
+                font-size: .95em;
+                text-align: center;
+                text-transform: uppercase;
+                text-decoration: underline;
+                padding: 2em 0 1em 0;
+                color: #2b2b2b;
+            }
+            #termos p {
+                width: 80%;
+                font-size: .95em;
+                font-weight: 500;
+                padding: .2em;
+            }
+            #fds {
+                font-size: .75em;
+                text-align: center;
+                margin: 2em;
+                color: #2b2b2b;
+            }
+            #nao-faco {
+                width: 60%;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                font-size: 1em;
+            }
+            #formas-pagamento {
+                width: 100%;
+                display: flex;
+                flex-direction: row;
+                justify-content: center;
+                gap: 2em;
+                padding-bottom: 2em;
+            }
+            #formas-pagamento li {
+                display: flex;
+                flex-direction: row;
+                justify-content: center;
+                font-size: 1.15em;
+                color: black;
+            }
+            #formas-pagamento li img {
+                width: 1.4em;
+                height: 1.4em;
+            }
+            #precos {
+                width: 100%;
+                display: flex;
+                flex-flow: column nowrap;
+                align-items: center;
+                scroll-margin-top: 12vh;
+                background-color: var(--s0);
+            }
+            #precos h3 {
+                color: var(--s2);
+                text-transform: uppercase;
+                padding: 2em 0 1em 0;
+            }
+            #precos h4 {
+                font-size: .95em;
+                text-align: center;
+                text-transform: uppercase;
+                text-decoration: underline;
+                padding: 2em 0 1em 0;
+                color: var(--s2);
+            }
+            #precos p {
+                width: 80%;
+                font-size: .95em;
+                font-weight: 500;
+                padding: .2em;
+                color: var(--s2);
+            }
+            .container-chibi {
+                max-width: 90%;
+                position: relative;
+                margin: auto;
+                padding: 2.5em 0 0 0;
+            }
+            #chibi h3 {
+                padding: .2em;
+            }
+            #chibi h3:first-child {
+                font-weight: 500;
+                text-align: center;
+                border-bottom: 2px solid var(--s2);
+            }
+            #chibi h3:last-child {
+                width: 100%;
+                font-size: .9em;
+                font-weight: 500;
+                text-align: center;
+                text-transform: initial;
+                margin-bottom: 4em;
+            }
+            .container-icone {
+                max-width: 90%;
+                position: relative;
+                margin: auto;
+                padding: 2.5em 0 0 0;
+            }
+            #icone h3 {
+                padding: .2em;
+            }
+            #icone h3:first-child {
+                font-weight: 500;
+                text-align: center;
+                border-bottom: 2px solid var(--s2);
+            }
+            #icone h3:last-child {
+                width: 100%;
+                font-size: .9em;
+                font-weight: 500;
+                text-align: center;
+                text-transform: initial;
+                margin-bottom: 4em;
+            }
+            .container-mc {
+                max-width: 90%;
+                position: relative;
+                margin: auto;
+            }
+            #meio-corpo {
+                display: flex;
+                flex-flow: column nowrap;
+            }
+            #meio-corpo h3 {
+                width: 100%;
+                margin: auto;
+                padding: 0.2em;
+                font-weight: 500;
+                text-align: center;
+            }
+            #items {
+                width: 70%;
+                margin: auto;
+                display: flex;
+                flex-flow: row nowrap;
+            }
+            #meio-corpo #items h3 {
+                width: 80%;
+                border-bottom: 2px solid var(--s2);
+            }
+            #price {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                text-align: center;
+            }
+            #price h3 {
+                border: none;
+            }
+            .container-ci {
+                max-width: 90%;
+                position: relative;
+                margin: auto;
+                padding: 2.5em 0 0 0;
+            }
+            #corpo-inteiro h3 {
+                padding: .2em;
+            }
+            #corpo-inteiro h3:first-child {
+                font-weight: 500;
+                text-align: center;
+            }
+            #corpo-inteiro #items h3 {
+                width: 85%;
+                border-bottom: 2px solid var(--s2);
+            }
+            .container-rascunho {
+                max-width: 90%;
+                position: relative;
+                margin: auto;
+                padding: 2.5em 0 0 0;
+            }
+            #rascunho h3 {
+                padding: .2em;
+            }
+            #rascunho h3:first-child {
+                font-weight: 500;
+                text-align: center;
+                border-bottom: 2px solid var(--s2);
+            }
+            #rascunho h3:last-child {
+                width: 100%;
+                font-size: .9em;
+                font-weight: 500;
+                text-align: center;
+                text-transform: initial;
+            }
+            .slide {
+                display: none;
+            }
+            .fade {
+                animation-name: fade;
+                animation-duration: 1.5s;
+            }
+            @keyframes fade {
+                from {opacity: .4}
+                to {opacity: 1}
+            }
+            footer {
+                height: 10vh;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+            }
+            .social {
+                display: flex;
+                flex-direction: row;
+                gap: .6em;
+            }
+            .d34d {
+                height: 4vh;
+                text-align: end;
+                margin-top: 1em;
+                padding: 1em 1em 0 0;
+                font-size: .6em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <img id="sign" src="img/sign.svg" width="200px" height="55px" onclick="window.scrollTo(0, 0)">
+        <div id="burger" onclick="animateBurger(this)">
+            <div class="burger-bar burger0"></div>
+            <div class="burger-bar burger1"></div>
+            <div class="burger-bar burger2"></div>
+        </div>
+        <nav>
+            <ul>
+                <li class="sobre" onclick="clickedNav()"><a href="#sobre">sobre</a></li>
+                <li class="termos" onclick="clickedNav()"><a href="#termos">termos</a></li>
+                <li class="precos" onclick="clickedNav()"><a href="#precos">preços</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <section id="sobre">
+            <h3>sobre mim</h3>
+            <p>Olá, meu nome é <em>Aryyne</em>.</p>
+            <p>Sou uma <em>desenhista e escritora brasileira</em>.</p>
+            <p>Se você se interessar em contratar o meu trabalho, visite a <strong>seção de termos</strong> para saber mais sobre prazos e escopos, e na aba de preços para saber mais sobre valores.</p>
+        </section>
+        <section id="termos">
+            <h3>termos</h3>
+            <p>O prazo para a produção será de 3 à 15 dias, com taxa de urgência o cliente deverá pagar +30% do valor combinado. Alterações simples serão grátis e aceitas apenas no sketch, fora do sketch as alterações e adições são a partir de R$2,00.</p>
+            <p>Se eu cancelar o pedido, será reembolsado 100% do valor;
+                Se o pedido é cancelado antes de ser iniciado, será reembolsado 100% do valor;</p>
+                <p>
+                    Se você pediu reembolso e já iniciei a arte, será descontado o valor do que já foi feito. Exemplo: Se você me pede um ícone finalizado e ele for cancelado durante o processo do desenho, será descontado o valor (seja de rascunho ou outras opções) e o restante será devolvido.
+                </p>
+                <p>
+                    Artes direcionadas a fins lucrativos terá o adicional de 100% do valor. Não autorizo alterações feitas no desenho sem meu consentimento (essa regra não se aplica a edições, como colocar a arte em banner e afins). Sempre lembre de dar créditos ao usar o desenho marcando minhas redes sociais!
+                </p>
+                <p>
+                    O pedido será confirmado e iniciado após o pagamento, ou seja, o pagamento é feito antes, a arte só é iniciada havendo o comprovante (Isso não quer dizer que você precise pagar dias antes, você pode pagar quando chegar na sua vez, fica ao seu critério). O preço pode alterar de acordo com a complexidade do pedido, referências são obrigatórias.
+
+                </p>
+                <h4>não faço</h4>
+                <ul id="nao-faco">
+                    <li>Estilos de outros artistas</li>
+                    <li>NSFW</li>
+                    <li>Furry</li>
+                    <li>Mecha</li>
+                    <li>Automóveis</li>
+                    <li>Realismo</li>
+                    <li>Animais complexos</li>
+                    <li>Armaduras complexas</li>
+                    <li>Qualquer coisa que eu não me sinta confortável de fazer</li>
+                </ul>
+                <p id="fds">Sábado e domingo não contam como dias úteis!</p>
+                <h4>formas de pagamento</h4>
+                <ul id="formas-pagamento">
+                    <li>
+                        <img src="./img/pix.png" width="50px" height="auto">
+                        <p>Pix</p>
+                    </li>
+                    <li>
+                        <img src="./img/paypal.png" width="50px" height="auto">
+                        <p>PayPal</p>
+                    </li>
+                </ul>
+        </section>
+        <section id="precos">
+            <h3>preços</h3>
+            <div class="container-chibi">
+                <div class="slide-chibi slide fade">
+                    <img src="./img/chibi_0.jpg" height="300px">
+                </div>
+                <div class="slide-chibi slide fade">
+                    <img src="./img/chibi_1.jpg" height="300px">
+                </div>
+           </div>
+            <div id="chibi">
+                <h3>chibi - r$ 25,00</h3>
+                <h3>Desenhos estilizados com caracteristícas mais fofas.</h3>
+            </div>
+
+            <div class="container-icone">
+                <div class="slide-icone slide fade">
+                    <img src="./img/icone_0.jpg" height="300px">
+                </div>
+                <div class="slide-icone slide fade">
+                    <img src="./img/icone_1.jpg" height="300px">
+                </div>
+            </div>
+            <div id="icone">
+                <h3>ícone - R$ 35,00</h3>
+                <h3>Ícones para redes sociais.</h3>
+            </div>
+
+            <div class="container-mc">
+                <div class="slide-mc slide fade">
+                    <img src="./img/mc_0.jpg" height="300px">
+                </div>
+                <div class="slide-mc slide fade">
+                    <img src="./img/mc_1.jpg" height="300px">
+                </div>
+                <div class="slide-mc slide fade">
+                    <img src="./img/mc_2.jpg" height="300px">
+                </div>
+            </div>
+            <div id="meio-corpo">
+                <h3>meio corpo</h3>
+                <div id="items">
+                    <div id="price">
+                        <h3>R$ 60,00</h3>
+                        <p>
+                            Desenho de personagem meio corpo sem cenário.
+                        </p>
+                    </div>
+                    <div id="price">
+                        <h3>R$ 70,00</h3>
+                        <p>
+                            Desenho de personagem meio corpo com cenário simples.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="container-ci">
+                <div class="slide-ci slide fade">
+                    <img src="./img/ci_0.jpg" height="300px">
+                </div>
+                <div class="slide-ci slide fade">
+                    <img src="./img/ci_1.jpeg" height="300px">
+                </div>
+            </div>
+            <div id="corpo-inteiro">
+                <h3>corpo inteiro</h3>
+                <div id="items">
+                    <div id="price">
+                        <h3>R$ 80,00</h3>
+                        <p>
+                            Desenho de personagem corpo inteiro sem cenário e itens.
+                        </p>
+                    </div>
+                    <div id="price">
+                        <h3>R$ 90,00</h3>
+                        <p>
+                            Desenho de personagem corpo inteiro + cenário ou itens simples.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="container-rascunho">
+                <div class="slide-rascunho slide fade">
+                    <img src="./img/rascunho_0.jpg" height="300px">
+                </div>
+            </div>
+            <div id="rascunho">
+                <h3>rascunho - r$ 20,00</h3>
+                <h3>Rascunhos de qualquer tipo.</h3>
+            </div>
+
+            <h4>formas de pagamento</h4>
+            <ul id="formas-pagamento">
+                <li>
+                    <img src="./img/pix-lb.png" width="50px" height="auto">
+                    <p>Pix</p>
+                </li>
+                <li>
+                    <img src="./img/paypal-lb.png" width="50px" height="auto">
+                    <p>PayPal</p>
+                </li>
+            </ul>
+        </section>
+    </main>
+    <footer>
+        <p>me acompanhe nas redes sociais:</p>
+        <div class="social">
+            <a href="https://twitter.com/vampryyne" target="_blank">
+                <img src="img/twitter.png" height="30px">
+            </a>
+            <a href="https://www.instagram.com/jayane_rose_" target="_blank">
+                <img src="img/instagram.png" height="30px">
+            </a>
+            <a href="https://discord.gg/A3Gr8jkct2" target="_blank">
+                <img src="img/discord.png" height="30px">
+            </a>
+        </div>
+    </footer>
+    <p class="d34d">made by <a href="http://t.me/d34dkn1ght83" target="_blank">d34dkn1ght83</a></p>
+</body>
+<script>
+    const nav = document.querySelector('nav');
+    const sobre = document.getElementById('sobre');
+    const burger = document.getElementById('burger');
+    function animateBurger(x) {
+        x.classList.toggle('change-burger');
+        nav.classList.toggle('show-nav');
+    }
+    function clickedNav(x, y) {
+        nav.classList.toggle('show-nav');
+        burger.classList.toggle('change-burger');
+    }
+</script>
+<script src="scripts/slide-chibi.js"></script>
+<script src="scripts/slide-icone.js"></script>
+<script src="scripts/slide-mc.js"></script>
+<script src="scripts/slide-ci.js"></script>
+<script src="scripts/slide-rascunho.js"></script>
+</html>
