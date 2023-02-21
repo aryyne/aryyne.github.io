@@ -341,11 +341,19 @@
                 to {opacity: 1}
             }
             footer {
+                position: relative;
+                top: 12vh;
                 height: 10vh;
                 display: flex;
                 flex-direction: column;
                 align-items: center;
                 justify-content: center;
+                gap: .2em;
+                padding-top: 1em;
+                background-color: var(--p1);
+            }
+            footer p {
+                font-size: .8em;
             }
             .social {
                 display: flex;
@@ -353,10 +361,8 @@
                 gap: .6em;
             }
             .d34d {
-                height: 4vh;
                 text-align: end;
-                margin-top: 1em;
-                padding: 1em 1em 0 0;
+                margin: .1em auto;
                 font-size: .6em;
             }
         }
@@ -644,11 +650,17 @@
                 to {opacity: 1}
             }
             footer {
+                position: relative;
+                top: 16vh;
                 height: 10vh;
                 display: flex;
                 flex-direction: column;
                 align-items: center;
                 justify-content: center;
+                gap: .2em;
+            }
+            footer p {
+                font-size: .8em;
             }
             .social {
                 display: flex;
@@ -847,8 +859,8 @@
                 <img src="img/discord.png" height="30px">
             </a>
         </div>
+        <p class="d34d">made by <a href="http://t.me/d34dkn1ght83" target="_blank">d34dkn1ght83</a></p>
     </footer>
-    <p class="d34d">made by <a href="http://t.me/d34dkn1ght83" target="_blank">d34dkn1ght83</a></p>
 </body>
 <script>
     const nav = document.querySelector('nav');
